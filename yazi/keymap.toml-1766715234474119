@@ -1,0 +1,4 @@
+[[manager.prepend_keymap]]
+on   = [ "M" ]
+run  = 'shell "mkdir -p ~/mnt && simple-mtpfs --device 1 ~/mnt" --block --confirm'
+desc = "Force Mount Device 1 to ~/mnt"

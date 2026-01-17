@@ -1,0 +1,5 @@
+[[manager.prepend_keymap]]
+on   = [ "M" ]
+run  = "plugin simple-mtpfs --args=select-then-mount --args=jump"
+desc = "Mount and jump to USB device"
+

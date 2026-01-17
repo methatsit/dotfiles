@@ -1,0 +1,11 @@
+# Mount Switch
+[[manager.prepend_keymap]]
+on   = [ "M" ]
+run  = 'shell "mkdir -p ~/mnt && simple-mtpfs --device 1 ~/mnt" --block --confirm'
+desc = "Mount Switch to ~/mnt"
+
+# Unmount Switch
+[[manager.prepend_keymap]]
+on   = [ "U" ]
+run  = 'shell "fusermount -u ~/mnt" --block --confirm'
+desc = "Unmount Switch"

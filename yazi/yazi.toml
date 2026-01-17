@@ -1,0 +1,46 @@
+# 1. Define all openers
+[opener]
+edit = [
+    { run = 'nvim "$@"', block = true },
+]
+play = [
+    { run = 'mpv "$@"', orphan = true },
+]
+qute = [
+    { run = 'qutebrowser "$@"', desc = "qutebrowser", detach = true }
+]
+
+# 2. Define the rules
+[open]
+prepend_rules = [
+    # Force ANY file ending in these extensions to use Neovim
+    # Note: Using 'url' instead of 'name' as per your documentation
+    { url = "*.{html,css,js,ts,jsx,tsx,jsonc,py,sh,toml,conf,lua}", use = "edit" },
+    
+    # Force empty files (catches empty .css or .html files)
+    { mime = "inode/x-empty",       use = "edit" },
+    { mime = "application/x-empty", use = "edit" },
+
+    # Specific MIME types for web development
+    { mime = "text/html",              use = "edit" },
+    { mime = "text/css",               use = "edit" },
+    { mime = "application/javascript", use = "edit" },
+
+    # PDF rule
+    { mime = "application/pdf", use = ["qute", "pdf_viewer"] },
+]
+
+rules = [
+    # Folder rules
+    { url = "*/", use = [ "edit", "open", "reveal" ] },
+    
+    # Text fallback
+    { mime = "text/*",  use = "edit" },
+    
+    # Media rules
+    { mime = "video/*", use = "play" },
+    { mime = "audio/*", use = "play" },
+    
+    # Ultimate fallback: If Yazi doesn't know what it is, try opening in nvim
+    { url = "*", use = "edit" }
+]
