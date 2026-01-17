@@ -1,0 +1,52 @@
+# --- General Settings ---
+sort=-time
+layer=overlay
+background-color=#2d2d2d
+width=350
+height=150
+border-size=2
+border-radius=5
+icons=1
+max-icon-size=48
+markup=1
+actions=1
+on-notify=none
+
+# --- Text Settings ---
+font=JetBrainsMono Nerd Font 12
+text-color=#ff9a00
+
+# --- Padding ---
+margin=10
+padding=15
+
+# --- Timeouts ---
+# 5000ms = 5 seconds. Set to 0 to make them stay forever until clicked.
+default-timeout=5000
+ignore-timeout=0
+
+# --- Colors (Half-Life Style) ---
+
+# Standard (HEV Suit Orange)
+[urgency=low]
+border-color=#ff9a00
+background-color=#1a1a1a
+
+[urgency=normal]
+border-color=#ff9a00
+background-color=#1a1a1a
+
+# Critical (Alarm Red)
+[urgency=critical]
+border-color=#ff0000
+text-color=#ff0000
+background-color=#101010
+# This was '0' in your old config (Infinite). I set it to 10s.
+default-timeout=10000 
+
+# Optional: Grouping
+[grouped]
+format=(%g) %s\n%b
+
+[mode=shout]
+on-notify=exec mpv --no-video /usr/share/sounds/freedesktop/stereo/message.oga
